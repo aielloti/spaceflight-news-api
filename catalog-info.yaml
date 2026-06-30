@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: spaceflight-news-api
+  description: API FastAPI que consome a Spaceflight News API (SNAPI) e expõe as últimas notícias.
+  annotations:
+    github.com/project-slug: aiellosti/spaceflight-news-api
+  tags:
+    - python
+    - fastapi
+    - rest
+  links:
+    - url: http://localhost:8000/docs
+      title: Swagger UI
+      icon: docs
+spec:
+  type: service
+  lifecycle: experimental
+  owner: devops-team
