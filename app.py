@@ -12,6 +12,7 @@ import os
 
 import httpx
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 
 # Base da API pública. Pode ser sobrescrita via variável de ambiente.
 SNAPI_BASE_URL = os.getenv(
@@ -23,6 +24,16 @@ app = FastAPI(
     title="Spaceflight News Proxy API",
     description="Projeto de teste que consome a Spaceflight News API (SNAPI).",
     version="1.0.0",
+)
+
+# Habilita CORS para que o Swagger UI (e chamadas feitas pelo navegador)
+# consigam consumir a API. Em ambiente de teste liberamos todas as origens.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
